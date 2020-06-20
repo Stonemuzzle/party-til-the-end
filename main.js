@@ -108,7 +108,7 @@ function buyPartyFavor(id) {
         partyFavors[id].cost *= 2
         partyFavors[id].count++
         document.getElementById(id).innerHTML = partyFavors[id].getCostLabel()
-        document.getElementById(id + "Power").innerHTML = partyFavors[id].getPowerLabel()
+        document.getElementById("passivesCellPower" + partyFavors[id].name).innerHTML = partyFavors[id].getPowerLabel()
         if (partyFavors[id].passive == true) {
             document.getElementById("passivesCellCount" + partyFavors[id].name).innerHTML = id + "s: " + partyFavors[id].count
         }
@@ -168,13 +168,9 @@ function mainGameLoop(timeStamp)
             let cellPower = row.insertCell()
             cellPower.id = "passivesCellPower" + partyFavors[key].name
             cellPower.appendChild(document.createTextNode(partyFavors[key].getPowerLabel()))
-        }
-
-        if (partyFavors[key].enabled == true) {
-            document.getElementById("div" + partyFavors[key].name + "Power").style.display = "block"
+            // Enable display of form elements
             document.getElementById("divBuy" + partyFavors[key].name).style.display = "block"
             if (partyFavors[key].passive == true) {
-                document.getElementById("div" + partyFavors[key].name + "Count").style.display = "block"
                 document.getElementById("divFunPerSecond").style.display = "block"
             }
         }
