@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Til The End</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+    <div class="header">
+        <div id="divStatus">
+            <p id="status">Longest week ever! I'm ready to party until the end of time, so let's get this party started!</p>
+        </div>
+    </div>
+    <div class="statsBox">
+        <div id="divTotalFun">
+            <p id="totalFun">No Fun</p>
+        </div>
+        <div id="divFunPerSecond">
+            <p id="funPerSecond">Fun/second: 0</p>
+        </div>
+        <div id="divStreamerCount">
+            <p id="StreamerCount">Streamers: 0</p>
+        </div>
+        <div id="divSpeakerCount">
+            <p id="SpeakerCount">Speakers: 0</p>
+        </div>
+    </div>
+    <div class="levelBox">
+        <div id="divHypePower">
+            <p id="HypePower">Hype Power: 1 fun per click</p>
+        </div>
+        <div id="divStreamerPower">
+            <p id="StreamerPower">Streamer Power: 1 fun per second</p>
+        </div>
+        <div id="divSpeakerPower">
+            <p id="SpeakerPower">Speaker Power: 1 fun per second</p>
+        </div>
+    </div>
+    <table id="passivesTable">
+    </table>
+
+    <div class="buttonBox">
+        <div class="buttonGroupActions">
+            <div id="divButtonParty">
+                <button onclick="usePartyFavor(this.id)" id="useHype">Party!</button>
+            </div>
+        </div>
+
+        <div class="buttonGroupPurchase">
+            <div id="divBuyStreamer">
+                <button onclick="buyPartyFavor(this.id)" id="Streamer">Buy a Streamer!<br/>Cost: 20 Fun</button>
+            </div>
+            <div id="divBuySpeaker">
+                <button onclick="buyPartyFavor(this.id)" id="Speaker">Buy a Speaker!<br/>Cost: 100 Fun</button>
+            </div>
+        </div>
+        <div class="buttonGroupUpgrades">
+            <div id="divBuyHype">
+                <button onclick="buyPartyFavor(this.id)" id="Hype">Party Harder!<br/>Cost: 10 Fun</button>
+            </div>
+        </div>
+        <div class="buttonGroupSettings">
+            <button onclick="hardReset()">Hard Reset</button>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,196 @@
+.header {
+    background-color: #ffffff
+}
+
+.buttonBox {
+    position: relative;
+    left: 400px;
+    width: 600px;
+    height: 400px;
+    border: 3px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+} 
+
+.statsBox
+{
+    position: absolute;
+    top: 50px;
+    width: 200px;
+}
+
+.levelBox
+{
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    width: 200px;
+}
+
+#divBuyHype {
+    display: none;
+}
+
+#divBuyStreamer {
+    display: none;
+}
+
+#divBuySpeaker {
+    display: none;
+}
+
+#divStreamerCount {
+    display: none;
+}
+
+#divSpeakerCount {
+    display: none;
+}
+
+#divHypePower {
+    display: none;
+}
+
+#divStreamerPower {
+    display: none;
+}
+
+#divSpeakerPower {
+    display: none;
+}
+
+#divFunPerSecond {
+    display: none;
+}
+
+#divButtonParty:active {
+    background-color: #f8462e;
+    box-shadow: 0 5px #666;
+    transform: scale(1.1);
+}
+
+.buttonGroupActions button {
+    background-color: #ffffff;
+    border: 1px solid black;
+    color: black;
+    padding: 10px 24px;
+    cursor: pointer;
+    width: 180px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+/* Clear floats (clearfix hack) */
+.buttonGroupActions:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .buttonGroupActions button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .buttonGroupActions button:hover {
+    background-color: #f8462e;
+    color: rgb(42, 50, 88);
+    font-weight: bold;
+  }
+
+.buttonGroupPurchase {
+    top: 50px;
+    left: 0px;
+    position: absolute;
+}
+
+.buttonGroupPurchase button {
+    background-color: #777777;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    width: 180px;
+    display: block;
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .buttonGroupPurchase:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .buttonGroupPurchase button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .buttonGroupPurchase button:hover {
+    background-color: #ae8e41;
+  }
+
+
+  .buttonGroupUpgrades button {
+    background-color: #777777;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    top: 50px;
+    width: 180px;
+    left: 200px;
+    position: absolute;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .buttonGroupUpgrades:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .buttonGroupUpgrades button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .buttonGroupUpgrades button:hover {
+    background-color: #ae8e41;
+  }
+
+
+  .buttonGroupSettings button {
+    background-color: #777777;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    width: 180px;
+    top: 50px;
+    left: 400px;
+    position: absolute;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .buttonGroupSettings:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .buttonGroupSettings button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .buttonGroupSettings button:hover {
+    background-color: #ae8e41;
+  }
