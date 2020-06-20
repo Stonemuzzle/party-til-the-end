@@ -64,6 +64,11 @@
     display: none;
 }
 
+#divPassivesTable {
+    display: absolute;
+    top: 100px;
+}
+
 #divButtonParty:active {
     background-color: #f8462e;
     box-shadow: 0 5px #666;
