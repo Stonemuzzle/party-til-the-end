@@ -98,7 +98,7 @@ function generatePassivesTable() {
         row.appendChild(th);
     }
     var sheet = window.document.styleSheets[0]
-    sheet.insertRule('#passivesTable {top: 100px;}', sheet.cssRules.length)
+    sheet.insertRule('#passivesTable {top: 100px; display: absolute;}', sheet.cssRules.length)
 }
 
 function buyPartyFavor(id) {
