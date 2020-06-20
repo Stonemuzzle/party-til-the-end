@@ -29,7 +29,6 @@ class PartyFavor {
 }
 
 var gameDataDefaults = {
-    funVisible: false,
     currentFun: 0,
     lifetimeFun: 0,
     lifetimeSpentFun: 0,
@@ -89,6 +88,7 @@ for (let [key, value] of Object.entries(gameData.partyFavors))
 function generatePassivesTable() {
     let table = document.getElementById("passivesTable")
     let data = ["Count", "Power", "Fun per second"]
+
     let thead = table.createTHead()
     let row = thead.insertRow()
     for (let key of data) {
@@ -99,6 +99,7 @@ function generatePassivesTable() {
     }
     var sheet = window.document.styleSheets[0]
     sheet.insertRule('#passivesTable {top: 0px;}', sheet.cssRules.length)
+
 }
 
 function buyPartyFavor(id) {
@@ -136,7 +137,7 @@ function init()
         window.msRequestAnimationFrame
 
     // Pointless comment because fuck this editor not recognizing the bloody block above
-    generatePassivesTable()
+//    generatePassivesTable()
     mainGameLoop(timeStamp)
 }
 
@@ -155,9 +156,14 @@ function mainGameLoop(timeStamp)
         secondsSinceLastSave = 0
         console.log("Game saved")
     }
+    
+    
 
+    // Populate passive table
     for (let [key, value] of Object.entries(partyFavors)) {
-        if (gameData.currentFun >= partyFavors[key].cost && partyFavors[key].enabled == false) {
+        if (partyFavors[key].passive == true 
+          && gameData.currentFun >= partyFavors[key].cost 
+          && partyFavors[key].enabled == false) {
             partyFavors[key].enabled = true
             let table = document.getElementById("passivesTable")
             let row = table.insertRow()

@@ -4,7 +4,7 @@
 
 .buttonBox {
     position: absolute;
-    left: 405px;
+    left: 505px;
     width: 600px;
     height: 400px;
     border: 3px solid black;
@@ -15,16 +15,17 @@
 
 #divPassivesTable {
     position: absolute;
-    width: 400px;
+    width: 500px;
     float: left;
-    top: 100px;
+    top: 120px;
 }
 
 .statsBox
 {
     position: absolute;
     top: 50px;
-    width: 200px;
+    width: 400px;
+    flex-direction: row;
 }
 
 .levelBox
@@ -44,14 +45,6 @@
 }
 
 #divBuySpeaker {
-    display: none;
-}
-
-#divStreamerCount {
-    display: none;
-}
-
-#divSpeakerCount {
     display: none;
 }
 
