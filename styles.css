@@ -1,5 +1,9 @@
 .header {
-    background-color: #ffffff
+    background-color: #00fff2
+}
+
+body {
+    background: rgb(141, 213, 231);
 }
 
 .buttonBox {
@@ -148,7 +152,6 @@
     position: absolute;
     flex-direction: column;
     flex-wrap: wrap;
-    text-align: left;
 }
   
   /* Clear floats (clearfix hack) */

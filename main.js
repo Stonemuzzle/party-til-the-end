@@ -105,7 +105,13 @@ function generatePassivesTable() {
 
 function addPassivesRow(key) {
     let table = document.getElementById("passivesTable")
-    let row = table.insertRow()
+    if (table.rows.length > partyFavors[key].index) {
+        var row = table.insertRow(partyFavors[key].index)
+        console.log("indexed")
+    } else {
+        var row = table.insertRow()
+        console.log("Not indexed")
+    }
     row.id = "passivesRow" + partyFavors[key].name
     let cellName = row.insertCell()
     cellName.id = "passivesCellName" + partyFavors[key].name
