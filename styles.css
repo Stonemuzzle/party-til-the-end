@@ -11,13 +11,21 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-} 
+}
 
-#divPassivesTable {
+.divPassivesTable {
     position: absolute;
     width: 500px;
     float: left;
     top: 120px;
+}
+
+#passivesTable {
+    width:497px;
+}
+
+#passivesTable th {
+    text-align: left;
 }
 
 .statsBox
@@ -25,14 +33,12 @@
     position: absolute;
     top: 50px;
     width: 400px;
+    display: flex;
     flex-direction: row;
+    flex-basis: 48%;
 }
 
-.levelBox
-{
-    position: absolute;
-    top: 50px;
-    left: 200px;
+.statsBox p {
     width: 200px;
 }
 
@@ -49,14 +55,6 @@
 }
 
 #divHypePower {
-    display: none;
-}
-
-#divStreamerPower {
-    display: none;
-}
-
-#divSpeakerPower {
     display: none;
 }
 
@@ -92,18 +90,18 @@
     content: "";
     clear: both;
     display: table;
-  }
+}
   
   .buttonGroupActions button:not(:last-child) {
     border-right: none; /* Prevent double borders */
-  }
+}
   
   /* Add a background color on hover */
   .buttonGroupActions button:hover {
     background-color: #f8462e;
     color: rgb(42, 50, 88);
     font-weight: bold;
-  }
+}
 
 .buttonGroupPurchase {
     top: 50px;
@@ -151,23 +149,23 @@
     flex-direction: column;
     flex-wrap: wrap;
     text-align: left;
-  }
+}
   
   /* Clear floats (clearfix hack) */
   .buttonGroupUpgrades:after {
     content: "";
     clear: both;
     display: table;
-  }
+}
   
   .buttonGroupUpgrades button:not(:last-child) {
     border-right: none; /* Prevent double borders */
-  }
+}
   
   /* Add a background color on hover */
   .buttonGroupUpgrades button:hover {
     background-color: #ae8e41;
-  }
+}
 
 
   .buttonGroupSettings button {
@@ -182,20 +180,20 @@
     position: absolute;
     flex-direction: column;
     flex-wrap: wrap;
-  }
+}
   
   /* Clear floats (clearfix hack) */
   .buttonGroupSettings:after {
     content: "";
     clear: both;
     display: table;
-  }
+}
   
   .buttonGroupSettings button:not(:last-child) {
     border-right: none; /* Prevent double borders */
-  }
+}
   
   /* Add a background color on hover */
   .buttonGroupSettings button:hover {
     background-color: #ae8e41;
-  }
+}
