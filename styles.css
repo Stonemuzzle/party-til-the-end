@@ -8,7 +8,7 @@ body {
 
 .buttonBox {
     position: absolute;
-    left: 505px;
+    left: 805px;
     width: 600px;
     height: 400px;
     border: 3px solid black;
@@ -52,8 +52,16 @@ body {
 }
 
 #divButtonParty {
-    transform: translateX(2px);
-    transform: translateY(2px);
+    position: absolute;
+    top: 50px;
+    left: 505px;
+    width: 264px;
+    height: 264px;
+    border: 3px solid black;
+}
+
+#useHype {
+    transform: translate(4px,4px)
 }
 
 #divButtonParty:active {
@@ -62,38 +70,8 @@ body {
     transform: scale(1.1);
 }
 
-.buttonGroupActions button {
-    background-color: #ffffff;
-    border: 1px solid black;
-    color: black;
-    padding: 10px 24px;
-    cursor: pointer;
-    width: 180px;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-}
-
-/* Clear floats (clearfix hack) */
-.buttonGroupActions:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-  
-  .buttonGroupActions button:not(:last-child) {
-    border-right: none; /* Prevent double borders */
-}
-  
-  /* Add a background color on hover */
-  .buttonGroupActions button:hover {
-    background-color: #f8462e;
-    color: rgb(42, 50, 88);
-    font-weight: bold;
-}
-
 .buttonGroupPurchase {
-    top: 50px;
+    top: 0px;
     left: 0px;
     position: absolute;
 }
@@ -131,7 +109,7 @@ body {
     color: white;
     padding: 10px 24px;
     cursor: pointer;
-    top: 50px;
+    top: 0px;
     width: 180px;
     left: 200px;
     position: absolute;
@@ -163,7 +141,7 @@ body {
     padding: 10px 24px;
     cursor: pointer;
     width: 180px;
-    top: 50px;
+    top: 0px;
     left: 400px;
     position: absolute;
     flex-direction: column;

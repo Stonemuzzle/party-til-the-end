@@ -66,16 +66,11 @@ var partyFavorsDefaults = {
 		cost: 10000,
 		enabled: false,
 		count: 0,
-		index: 4,
+        index: 4,
+        plural: "horns",
+		image: "horn",
 		costLabel: "Buy a Speaker!<br/>Cost: objvarcost Fun",
 		powerLabel: "Speaker Power: objvarpower Fun per second",
-		
-		costLabel: function() {
-            return "Buy a " + this.name + "!<br/>Cost: " + this.cost + " Fun"
-		},
-		powerLabel: function() {
-			return this.name + " Power: " + this.power + " Fun per second"
-		},
 	}
 }
 
@@ -188,6 +183,8 @@ function buyPartyFavor(key) {
         partyData.partyFavors[key].cost *= 2
         partyData.partyFavors[key].count++
     }
+    updatePartyFavorControls(key)
+    updatePassiveTable(key)
 }
 
 function buyClickUpgrade(key) {
@@ -198,6 +195,7 @@ function buyClickUpgrade(key) {
         partyData.clickUpgrades[key].count++
         updateClickPower()
     }
+    updateClickUpgradeControls(key)
 }
 
 function updateClickPower() {
