@@ -22,6 +22,7 @@ body {
     width: 500px;
     float: left;
     top: 120px;
+    visibility: hidden;
 }
 
 #passivesTable {
@@ -44,22 +45,6 @@ body {
 
 .statsBox p {
     width: 200px;
-}
-
-#divBuyHype {
-    display: none;
-}
-
-#divBuyStreamer {
-    display: none;
-}
-
-#divBuySpeaker {
-    display: none;
-}
-
-#divHypePower {
-    display: none;
 }
 
 #divFunPerSecond {

@@ -22,9 +22,6 @@
         </div>
     </div>
     <div class="divPassivesTable">
-        <div id="divFunPerSecond">
-            <p id="funPerSecond">Fun/second: 0</p>
-        </div>
         <table id="passivesTable">
         </table>
     </div>
@@ -32,22 +29,13 @@
     <div class="buttonBox">
         <div class="buttonGroupActions">
             <div id="divButtonParty">
-                <button onclick="usePartyFavor(this.id)" id="useHype">Party!</button>
+                <img src="grin-256.jpg" onclick="clickParty(this.id)" id="useHype">Party!</img>
             </div>
         </div>
 
         <div class="buttonGroupPurchase">
-            <div id="divBuyStreamer">
-                <button onclick="buyPartyFavor(this.id)" id="Streamer">Buy a Streamer!<br/>Cost: 20 Fun</button>
-            </div>
-            <div id="divBuySpeaker">
-                <button onclick="buyPartyFavor(this.id)" id="Speaker">Buy a Speaker!<br/>Cost: 100 Fun</button>
-            </div>
         </div>
         <div class="buttonGroupUpgrades">
-            <div id="divBuyHype">
-                <button onclick="buyPartyFavor(this.id)" id="Hype">Party Harder!<br/>Cost: 10 Fun</button>
-            </div>
         </div>
         <div class="buttonGroupSettings">
             <button onclick="hardReset()">Hard Reset</button>
