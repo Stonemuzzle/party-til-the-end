@@ -60,14 +60,26 @@ body {
     border: 3px solid black;
 }
 
-#useHype {
-    transform: translate(4px,4px)
-}
-
 #divButtonParty:active {
     background-color: #f8462e;
     box-shadow: 0 5px #666;
     transform: scale(1.1);
+}
+
+#useHype {
+    transform: translate(4px,4px)
+}
+
+#divButtonParty:active:after {
+    z-index: 10;
+    background: rgba(255, 0, 0, 0.226);
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .buttonGroupPurchase {
