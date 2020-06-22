@@ -176,17 +176,6 @@ function generatePassiveTable() {
     document.getElementById("divFunPerSecond").style.display = "inline-block"
 }
 
-function buyPartyFavor(key) {
-    if (partyData.currentFun >= partyData.partyFavors[key].cost)
-    {
-        decreaseFun(partyData.partyFavors[key].cost)
-        partyData.partyFavors[key].cost *= 2
-        partyData.partyFavors[key].count++
-    }
-    updatePartyFavorControls(key)
-    updatePassiveTable(key)
-}
-
 function buyClickUpgrade(key) {
     if (partyData.currentFun >= partyData.clickUpgrades[key].cost)
     {
@@ -207,43 +196,22 @@ function updateClickPower() {
     document.getElementById("HypePower").innerHTML = "Hype Power: " + (clickBoost + 1) + " fun per click"
 }
 
-function getPartyFavorIndex(name) {   
-    return partyData.partyFavorValues.findIndex(function (element) {return element == name})
-}
-
-function updatePartyFavor(name, value) {
-    
-}
-
-function createPartyFavors(key) {
-    if (partyData.partyFavors[key].rowAdded == false
-    && partyData.partyFavors[key].enabled == true) {
-        addPassivesRow(key)
-        partyData.partyFavors[key].rowAdded = true
-    }
-
-    if (partyData.partyFavors[key].buttonAdded == false && partyData.partyFavors[key].enabled == true) {
-        let divBuyButton = document.createElement("div")
-        divBuyButton.id = "divBuy" + key
-        let buyButton = document.createElement("button")
-        buyButton.id = key
-        buyButton.setAttribute("onClick", "buyPartyFavor(this.id)")
-        divBuyButton.appendChild(buyButton)
-        let buttonGroupPurchase = document.getElementsByClassName("buttonGroupPurchase")[0]
-        if (buttonGroupPurchase.childElementCount > partyData.partyFavors[key].index) {
-            buttonGroupPurchase.appendChild(divBuyButton)
-        } else {
-            buttonGroupPurchase.insertBefore(divBuyButton, buttonGroupPurchase.children[partyData.partyFavors[key].index])
-        }
-        partyData.partyFavors[key].buttonAdded = true
-    }
-}
-
 function clickParty(key) {
     key = key.substr(3)
     increaseFun(partyData.partyClicks.power)
     document.getElementById("totalFun").innerHTML = "Fun: " + partyData.currentFun
     partyData.lifetimeClicks++
+}
+
+function buyPartyFavor(key) {
+    if (partyData.currentFun >= partyData.partyFavors[key].cost)
+    {
+        decreaseFun(partyData.partyFavors[key].cost)
+        partyData.partyFavors[key].cost *= 2
+        partyData.partyFavors[key].count++
+    }
+    updatePartyFavorControls(key)
+    updatePassiveTable(key)
 }
 
 function enablePartyFavor(key) {
@@ -446,10 +414,6 @@ function loadGameState() {
         }
         generatePassiveTable
     }
-}
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function hardReset() {
