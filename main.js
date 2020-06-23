@@ -167,13 +167,13 @@ function generatePassiveTable() {
     }
     let divFunPerSecond = document.createElement("div")
     divFunPerSecond.id = "divFunPerSecond"
+    divFunPerSecond.style.display = "inline-block"
     let txtFunPerSecond = document.createElement("p")
     txtFunPerSecond.id = "funPerSecond"
+    txtFunPerSecond.innerHTML = "Fun/second: 0"
     divFunPerSecond.appendChild(txtFunPerSecond)
     let passiveClass = document.getElementsByClassName("divPassivesTable")[0]
     passiveClass.insertBefore(divFunPerSecond, passiveClass.firstChild)
-    document.getElementById("funPerSecond").innerHTML = "Fun/second: 0"
-    document.getElementById("divFunPerSecond").style.display = "inline-block"
 }
 
 function buyClickUpgrade(key) {

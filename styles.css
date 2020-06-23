@@ -8,6 +8,7 @@ body {
 
 .buttonBox {
     position: absolute;
+    top: 70px;
     left: 805px;
     width: 600px;
     height: 400px;
@@ -19,14 +20,14 @@ body {
 
 .divPassivesTable {
     position: absolute;
-    width: 500px;
+    width: 450px;
     float: left;
     top: 120px;
     visibility: hidden;
 }
 
 #passivesTable {
-    width:497px;
+    width:447px;
 }
 
 #passivesTable th {
@@ -36,7 +37,7 @@ body {
 .statsBox
 {
     position: absolute;
-    top: 50px;
+    top: 60px;
     width: 400px;
     display: flex;
     flex-direction: row;
@@ -53,8 +54,8 @@ body {
 
 #divButtonParty {
     position: absolute;
-    top: 50px;
-    left: 505px;
+    top: 70px;
+    left: 455px;
     width: 264px;
     height: 264px;
     border: 3px solid black;
@@ -63,7 +64,7 @@ body {
 #divButtonParty:active {
     background-color: #f8462e;
     box-shadow: 0 5px #666;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 #useHype {
@@ -80,6 +81,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    pointer-events: none;
 }
 
 .buttonGroupPurchase {
