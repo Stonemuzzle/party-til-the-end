@@ -1,20 +1,20 @@
+/*************************************************
+* Global variables
+*************************************************/
+
 var partyData = {}
 
-/*
- * Game functions
- */
-
 var clickUpgradesDefaults = {
-    Hype: {
-        name: "Hype",
-        description: "More excitement makes for MOAR PARTY!",
+    Roommate: {
+        name: "Roommate",
+        description: "More partiers make for MOAR PARTY!",
         power: 1,
         cost: 10,
         enabled: false,
         index: 1,
-        plural: "hype",
-        image: "hype",
-        costLabel: "Party harder!<br/>Cost: objvarcost Fun",
+        plural: "roommates",
+        image: "roommate",
+        costLabel: "Let your roomie join the party!<br/>Cost: objvarcost Fun",
     }
 }
 
@@ -74,43 +74,11 @@ var partyFavorsDefaults = {
 	}
 }
 
-function init() {
-    window.requestAnimationFrame =
-        window.requestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.msRequestAnimationFrame
 
-    // Initialize variables
 
-    partyData.funPerSecond = 0
-    partyData.lastAutoPartyTimeStamp = Date.now()
-    partyData.oldTimeStamp = Date.now()
-    partyData.secondsSinceLastSave = 0
-    partyData.passiveTableCreated = false
-    partyData.currentFun = 0
-    partyData.lifetimeFun = 0
-    partyData.lifetimeSpentFun = 0
-    partyData.lifetimeClicks = 0
-    partyData.version = 1
-    partyData.statusMessages = {
-        0: "Longest week ever! I'm ready to party until the end of time, so let's get this party started!",
-        1:"Now we're partying!"
-    }
-    partyData.passivesEnabled = false
-    partyData.partyClicks = {
-		power: 1,
-    }
-    partyData.partyFavors = {}
-    partyData.clickUpgrades = {}
-    
-    partyFavorInitialization()
-    clickUpgradesInitialization()
-    generatePassiveTable()
-    
-    loadGameState()
-    mainGameLoop()
-}
+/*************************************************
+* Active click functions
+*************************************************/
 
 function clickUpgradesInitialization()
 {
@@ -131,6 +99,76 @@ function clickUpgradesInitialization()
         partyData.clickUpgrades[tempObj.name] = tempObj
     }
 }
+
+function getPartygoer(key) {
+    if (partyData.currentFun >= partyData.clickUpgrades[key].cost)
+    {
+        decreaseFun(partyData.clickUpgrades[key].cost)
+        partyData.clickUpgrades[key].cost *=2
+        partyData.clickUpgrades[key].count++
+        updateClickPower()
+    }
+    updateClickUpgradeControls(key)
+}
+
+function updateClickPower() {
+    let clickBoost = 0
+    for (let key of Object.keys(partyData.clickUpgrades)) {
+        clickBoost += partyData.clickUpgrades[key].power * partyData.clickUpgrades[key].count
+    }
+    partyData.partyClicks.power = clickBoost + 1
+    document.getElementById("HypePower").innerHTML = "Hype Power: " + (clickBoost + 1) + " fun per click"
+}
+
+function clickParty(key) {
+    key = key.substr(3)
+    increaseFun(partyData.partyClicks.power)
+    document.getElementById("totalFun").innerHTML = "Fun: " + partyData.currentFun
+    partyData.lifetimeClicks++
+}
+
+function enableClickUpgrade(key) {
+    if (partyData.currentFun > partyData.clickUpgrades[key].cost) {
+    partyData.clickUpgrades[key].enabled = true
+    }
+    if (partyData.clickUpgrades[key].enabled == true) {
+        if (document.getElementById([key]) === null) {
+            createControlsClickUpgrade(key)
+        }
+    }
+}
+
+function createControlsClickUpgrade(key) {
+    // Add buy button
+    let divBuyButton = document.createElement("div")
+    divBuyButton.id = "divBuy" + key
+    let buyButton = document.createElement("button")
+    buyButton.id = key
+    buyButton.className = "tooltip"
+    buyButton.setAttribute("description", partyData.clickUpgrades[key].description)
+    buyButton.setAttribute("onClick", "getPartygoer(this.id)")
+    divBuyButton.appendChild(buyButton)
+
+    let buttonGroupPurchase = document.getElementsByClassName("buttonGroupUpgrades")[0]
+    if (buttonGroupPurchase.childElementCount > partyData.clickUpgrades[key].index) {
+        buttonGroupPurchase.appendChild(divBuyButton)
+    } else {
+        buttonGroupPurchase.insertBefore(divBuyButton, buttonGroupPurchase.children[partyData.clickUpgrades[key].index])
+    }
+    partyData.clickUpgrades[key].buttonAdded = true
+}
+
+function updateClickUpgradeControls(key) {
+    if (document.getElementById(key) !== null) {
+        document.getElementById(key).innerHTML = 
+            (partyData.clickUpgrades[key].costLabel).replace("objvarcost", partyData.clickUpgrades[key].cost)
+    }
+}
+
+
+/*************************************************
+* Party favor functions
+*************************************************/
 
 function partyFavorInitialization()
 {
@@ -176,33 +214,6 @@ function generatePassiveTable() {
     passiveClass.insertBefore(divFunPerSecond, passiveClass.firstChild)
 }
 
-function buyClickUpgrade(key) {
-    if (partyData.currentFun >= partyData.clickUpgrades[key].cost)
-    {
-        decreaseFun(partyData.clickUpgrades[key].cost)
-        partyData.clickUpgrades[key].cost *=2
-        partyData.clickUpgrades[key].count++
-        updateClickPower()
-    }
-    updateClickUpgradeControls(key)
-}
-
-function updateClickPower() {
-    let clickBoost = 0
-    for (let key of Object.keys(partyData.clickUpgrades)) {
-        clickBoost += partyData.clickUpgrades[key].power * partyData.clickUpgrades[key].count
-    }
-    partyData.partyClicks.power = clickBoost + 1
-    document.getElementById("HypePower").innerHTML = "Hype Power: " + (clickBoost + 1) + " fun per click"
-}
-
-function clickParty(key) {
-    key = key.substr(3)
-    increaseFun(partyData.partyClicks.power)
-    document.getElementById("totalFun").innerHTML = "Fun: " + partyData.currentFun
-    partyData.lifetimeClicks++
-}
-
 function buyPartyFavor(key) {
     if (partyData.currentFun >= partyData.partyFavors[key].cost)
     {
@@ -231,17 +242,6 @@ function enablePartyFavor(key) {
     }
 }
 
-function enableClickUpgrade(key) {
-    if (partyData.currentFun > partyData.clickUpgrades[key].cost) {
-    partyData.clickUpgrades[key].enabled = true
-    }
-    if (partyData.clickUpgrades[key].enabled == true) {
-        if (document.getElementById([key]) === null) {
-            createControlsClickUpgrade(key)
-        }
-    }
-}
-
 function createControlsPartyFavor(key) {
     // Add buy button
     let divBuyButton = document.createElement("div")
@@ -257,23 +257,6 @@ function createControlsPartyFavor(key) {
         buttonGroupPurchase.insertBefore(divBuyButton, buttonGroupPurchase.children[partyData.partyFavors[key].index])
     }
     partyData.partyFavors[key].buttonAdded = true
-}
-
-function createControlsClickUpgrade(key) {
-    // Add buy button
-    let divBuyButton = document.createElement("div")
-    divBuyButton.id = "divBuy" + key
-    let buyButton = document.createElement("button")
-    buyButton.id = key
-    buyButton.setAttribute("onClick", "buyClickUpgrade(this.id)")
-    divBuyButton.appendChild(buyButton)
-    let buttonGroupPurchase = document.getElementsByClassName("buttonGroupUpgrades")[0]
-    if (buttonGroupPurchase.childElementCount > partyData.clickUpgrades[key].index) {
-        buttonGroupPurchase.appendChild(divBuyButton)
-    } else {
-        buttonGroupPurchase.insertBefore(divBuyButton, buttonGroupPurchase.children[partyData.clickUpgrades[key].index])
-    }
-    partyData.clickUpgrades[key].buttonAdded = true
 }
 
 function addPassivesRow(key) {
@@ -315,11 +298,47 @@ function updatePartyFavorControls(key) {
     }
 }
 
-function updateClickUpgradeControls(key) {
-    if (document.getElementById(key) !== null) {
-        document.getElementById(key).innerHTML = 
-            (partyData.clickUpgrades[key].costLabel).replace("objvarcost", partyData.clickUpgrades[key].cost)
+
+/*************************************************
+* Core game functions
+*************************************************/
+
+function init() {
+    window.requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame
+
+    // Initialize variables
+
+    partyData.funPerSecond = 0
+    partyData.lastAutoPartyTimeStamp = Date.now()
+    partyData.oldTimeStamp = Date.now()
+    partyData.secondsSinceLastSave = 0
+    partyData.passiveTableCreated = false
+    partyData.currentFun = 0
+    partyData.lifetimeFun = 0
+    partyData.lifetimeSpentFun = 0
+    partyData.lifetimeClicks = 0
+    partyData.version = 1
+    partyData.statusMessages = {
+        0: "Longest week ever! I'm ready to party until the end of time, so let's get this party started!",
+        1:"Now we're partying!"
     }
+    partyData.passivesEnabled = false
+    partyData.partyClicks = {
+		power: 1,
+    }
+    partyData.partyFavors = {}
+    partyData.clickUpgrades = {}
+    
+    partyFavorInitialization()
+    clickUpgradesInitialization()
+    generatePassiveTable()
+    
+    loadGameState()
+    mainGameLoop()
 }
 
 function mainGameLoop()
@@ -387,9 +406,9 @@ function decreaseFun(amount) {
 }
 
 
-/*
- * Utility functions
- */
+/*************************************************
+* Utility functions
+*************************************************/
 
 function saveGameState() {
     let saveState = new Promise(function(resolve, reject) {
