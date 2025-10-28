@@ -189,7 +189,7 @@ function decreaseFun(amount: number): void {
     partyData.lifetimeSpentFun += amount;
 }
 
-function getPartygoer(key) {
+function getPartygoer(key: string): void {
     if (partyData.currentFun >= partyData.clickUpgrades[key].cost)
     {
         decreaseFun(partyData.clickUpgrades[key].cost)
@@ -209,7 +209,7 @@ function updateClickPower() {
     document.getElementById("HypePower")!.innerHTML = "Hype Power: " + (clickBoost + 1) + " fun per click"
 }
 
-function clickParty(key): void {
+function clickParty(key: string): void {
     key = key.substr(3)
     increaseFun(partyData.partyClicks.power)
     document.getElementById("totalFun")!.innerHTML = "Fun: " + partyData.currentFun
@@ -247,9 +247,9 @@ function createControlsClickUpgrade(key: string): void {
     partyData.clickUpgrades[key].buttonAdded = true
 }
 
-function updateClickUpgradeControls(key) {
+function updateClickUpgradeControls(key: string): void {
     if (document.getElementById(key) !== null) {
-        document.getElementById(key)!.innerHTML = 
+        document.getElementById(key)!.innerHTML =
             (partyData.clickUpgrades[key].costLabel).replace("objvarcost", partyData.clickUpgrades[key].cost.toString())
     }
 }
