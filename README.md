@@ -148,6 +148,17 @@ The game is deployed as a static site on **GitHub Pages**. The workflow is autom
 - The compiled `party.js` is committed to the repository
 - No build step required in production (fully static)
 
+## 🐞 Debugging with VS Code
+
+If you want to debug the game locally using VS Code, a launch configuration is included at `.vscode/launch.json`.
+
+- Open this workspace in VS Code and press F5 (Start Debugging). VS Code will launch a Chrome instance and open `index.html`.
+- The configuration runs the `tsc: build` preLaunchTask which compiles `party.ts` to `party.js` before the browser opens. That task is defined in `.vscode/tasks.json` and runs `npx tsc -p tsconfig.json`.
+- No static server is required — the app is stateless and uses browser `localStorage`, so opening `index.html` directly in the browser works. Just press F5 and enjoy.
+- Source maps are enabled, so breakpoints in `party.ts` should map to the running code in Chrome.
+
+If you prefer automatic TypeScript rebuilds while debugging, run `npx tsc --watch` in a separate terminal before pressing F5.
+
 ## 🎮 How to Play
 
 1. Open `index.html` in a web browser
