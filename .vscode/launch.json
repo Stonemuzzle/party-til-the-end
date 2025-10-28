@@ -10,5 +10,15 @@
       "preLaunchTask": "tsc: build",
       "sourceMaps": true
     }
+    ,
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch index.html in Chrome (tsc --watch)",
+      "file": "${workspaceFolder}/index.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "tsc: watch",
+      "sourceMaps": true
+    }
   ]
 }

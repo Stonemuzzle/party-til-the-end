@@ -5,6 +5,8 @@ yarn.lock
 
 # IDE
 .vscode/
+.vscode/launch.json
+.vscode/tasks.json
 .idea/
 *.swp
 *.swo

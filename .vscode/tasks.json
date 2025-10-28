@@ -18,5 +18,25 @@
         "$tsc"
       ]
     }
+    ,
+    {
+      "label": "tsc: watch",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "tsc",
+        "-p",
+        "tsconfig.json",
+        "--watch"
+      ],
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc-watch"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
   ]
 }
